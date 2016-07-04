@@ -54,7 +54,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user.manager', compact('user'));
     }
 
     /**
@@ -76,6 +77,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return $this->index();
     }
 }
