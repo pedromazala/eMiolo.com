@@ -19,7 +19,4 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/register', 'UserController@showUserRegistration');
-Route::post('/register', 'UserController@saveUser');
-
 Route::resource('user', 'UserController');
