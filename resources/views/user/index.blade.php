@@ -9,6 +9,7 @@
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
+                <th colspan="2">Actions</th>
                 <th>Name</th>
                 <th>Password</th>
                 <th>Email</th>
@@ -18,19 +19,16 @@
             <tbody>
             @foreach ($users as $user)
                 <tr>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->password }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ route('user.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) }}</td>
-                    <?php
-                            /*
+                    <td><a class="btn btn-info" href="{{ route('user.edit', array($user->id)) }}">Edit</a></td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('user.destroy', $user->id))) }}
                         {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                     </td>
-                            */
-                    ?>
+
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->password }}</td>
+                    <td>{{ $user->email }}</td>
                 </tr>
             @endforeach
 
