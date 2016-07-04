@@ -10,9 +10,10 @@
             <thead>
             <tr>
                 <th colspan="2">Actions</th>
+                <th>Key</th>
                 <th>Name</th>
                 <th>Password</th>
-                <th>Email</th>
+                <th>E-mail</th>
             </tr>
             </thead>
 
@@ -26,6 +27,7 @@
                         {{ Form::close() }}
                     </td>
 
+                    <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->password }}</td>
                     <td>{{ $user->email }}</td>
@@ -36,6 +38,8 @@
 
         </table>
     @else
-        There are no users
+        <div>
+            There are no users
+        </div>
     @endif
 @endsection
