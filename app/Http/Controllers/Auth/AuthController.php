@@ -44,14 +44,19 @@ class AuthController extends Controller
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
+     * @param  bool  $crud
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    public function validator(array $data, $crud = false)
     {
+        $pass = 'required|min:6|confirmed';
+        if ($crud) {
+            $pass = 'required|min:6';
+        }
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => $pass,
         ]);
     }
 
@@ -61,7 +66,7 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    public function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
