@@ -4,14 +4,19 @@
     <?php
     $crud = true;
     $url = url('/user');
+    $save = 'Save';
     if (!isset($user)) {
         $user = new \App\User();
 
         $crud = false;
         $url = url('/register');
+        $save = 'Register';
     }
 
     $edit = ($user->id > 0);
+    if ($edit) {
+        $save = 'Update';
+    }
 
     $user->name = (old('name') ? : $user->name);
     $user->email = (old('email') ? : $user->email);
@@ -98,7 +103,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-primary">
-                                            <i class="fa fa-btn fa-user"></i> Register
+                                            <i class="fa fa-btn fa-user"></i> {{ $save }}
                                         </button>
 
                                         @if ($crud)
