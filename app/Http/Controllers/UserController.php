@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\User;
+use Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
@@ -73,7 +74,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('auth.register')->with('user', $user);
+        return view('auth.register')
+            ->with('user', $user);
     }
 
     /**
@@ -84,7 +86,34 @@ class UserController extends Controller
      */
     public function update($id)
     {
-        //
+        $user = User::find($id);
+
+        $validator = Validator::make(Input::all(), [
+            'name' => 'required|max:255',
+            'password' => 'min:6'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('user.edit', ['id' => $id])
+                ->with('user', $user)
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
+        }
+
+        foreach (Input::all() as $key => $value) {
+            if (in_array($key, ['name', 'password'], true)) {
+                $user->$key = $value;
+                if ($key === 'password') {
+                    $user->$key = bcrypt($value);
+                }
+            }
+        }
+
+        $user->save();
+
+        return redirect()
+            ->route('user.edit', ['id' => $id]);
     }
 
     /**
