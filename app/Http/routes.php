@@ -20,3 +20,6 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('user', 'UserController');
+
+Route::get('/nasa', 'NasaController@index');
+Route::get('/nasa/apod', 'NasaController@apod');
