@@ -16,7 +16,7 @@ class NasaController extends Controller
     {
         return view('nasa.index');
     }
-    
+
     public function apod()
     {
         return view('nasa.apod')
@@ -35,7 +35,6 @@ class NasaController extends Controller
         return view('nasa.neo-lookup')
             ->with('urlJpl', 'http://ssd.jpl.nasa.gov/sbdb.cgi?sstr=')
             ->with('url', self::API_URL . 'neo/rest/v1/neo/')
-            ->with('api_key', self::API_KEY)
-            ;
+            ->with('api_key', self::API_KEY);
     }
 }

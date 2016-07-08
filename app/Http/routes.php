@@ -19,9 +19,8 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::group(['middleware' => 'auth'], function()
-{
-//    Route::resource('todo', 'TodoController', ['only' => ['index']]);
+Route::group(['middleware' => 'auth'], function () {
+    //Route::resource('todo', 'TodoController', ['only' => ['index']]);
     Route::resource('user', 'UserController');
 
     Route::get('/nasa', 'NasaController@index');

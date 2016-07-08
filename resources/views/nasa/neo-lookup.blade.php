@@ -155,7 +155,7 @@
         }
 
         $(function () {
-            $(document).ajaxError(function(e, xhr, settings, exception) {
+            $(document).ajaxError(function (e, xhr, settings, exception) {
                 alert("The informed JPL ID is not compatible with this API");
             });
 
