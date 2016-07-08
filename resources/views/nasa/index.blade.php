@@ -27,7 +27,13 @@
                             <tr>
                                 <td><a class="btn btn-info" href="{{ url('/nasa/neo-feed') }}">Access</a></td>
                                 <td>NEO - Feed</td>
-                                <td>Retrieve a list of Asteroids based on their closest approach date to Earth. </td>
+                                <td>Retrieve a list of Asteroids based on their closest approach date to Earth.</td>
+                            </tr>
+                            <tr>
+                                <td><a class="btn btn-info" href="{{ url('/nasa/neo-lookup') }}">Access</a></td>
+                                <td>NEO - Lookup</td>
+                                <td><a href="http://ssd.jpl.nasa.gov/sbdb_query.cgi" target="_blank">Lookup a specific
+                                        Asteroid based on its NASA JPL small body (SPK-ID) ID</a></td>
                             </tr>
                             </tbody>
                         </table>
