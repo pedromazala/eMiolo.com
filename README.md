@@ -50,4 +50,15 @@ O primeiro usuário do sistema pode ser inserido na rota `/register` do projeto.
 
 #### 4.2 Importar o DUMP do banco que está no projeto
 
-É possível importar o DUMP do banco que está no path 
+É possível importar o DUMP do banco que está no path `{EXPECTED_DIR}/storage/database/bigBang.sql`
+
+Este DUMP já vai com o usuário admin@eMiolo.com com a senha 123456
+
+### 5. Executando o projeto
+
+Com o console no diretório do projeto execute o comando:
+```shell
+$ php artisan serve
+```
+
+O projeto estará disponível na URL [http://localhost:8000/](http://localhost:8000/)
