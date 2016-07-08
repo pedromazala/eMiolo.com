@@ -29,4 +29,13 @@ class NasaController extends Controller
             ->with('url', self::API_URL . 'neo/rest/v1/feed?api_key=' . self::API_KEY)
             ->with('urlJpl', 'http://ssd.jpl.nasa.gov/sbdb.cgi?sstr=');
     }
+
+    public function neoLookup()
+    {
+        return view('nasa.neo-lookup')
+            ->with('urlJpl', 'http://ssd.jpl.nasa.gov/sbdb.cgi?sstr=')
+            ->with('url', self::API_URL . 'neo/rest/v1/neo/')
+            ->with('api_key', self::API_KEY)
+            ;
+    }
 }
