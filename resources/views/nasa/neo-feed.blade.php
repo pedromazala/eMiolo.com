@@ -52,6 +52,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-2 control-label">Lookup</label>
+                                <div class="col-md-4">
+                                    <a class="nasa_lookup" href="" target="_blank">Link to Lookup</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-2 control-label">JPL URL</label>
                                 <div class="col-md-4">
                                     <a class="nasa_jpl_url" href="" target="_blank">Link to JPL</a>
@@ -142,6 +149,7 @@
                             $response.find('.name').val(neo.name);
                             $response.find('.neo_reference_id').val(neo.neo_reference_id);
                             $response.find('.nasa_jpl_url').attr('href', '{{ $urlJpl }}' + neo.neo_reference_id);
+                            $response.find('.nasa_lookup').attr('href', '{{ url('/nasa/neo-lookup') }}?id=' + neo.neo_reference_id);
                             $response.find('.absolute_magnitude_h').val(neo.absolute_magnitude_h);
 
                             $response.find('.estimated_diameter_min').val(neo.estimated_diameter.feet.estimated_diameter_min.toFixed(2) + ' feet');
