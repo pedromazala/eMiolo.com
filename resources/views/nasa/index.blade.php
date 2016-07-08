@@ -24,6 +24,11 @@
                                 <td><a href="http://apod.nasa.gov/apod/astropix.html" target="_blank">Astronomy Picture
                                         of the Day</a></td>
                             </tr>
+                            <tr>
+                                <td><a class="btn btn-info" href="{{ url('/nasa/neo-feed') }}">Access</a></td>
+                                <td>NEO - Feed</td>
+                                <td>Retrieve a list of Asteroids based on their closest approach date to Earth. </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
