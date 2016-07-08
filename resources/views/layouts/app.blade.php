@@ -58,6 +58,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/user/' . Auth::user()->id . '/edit') }}">My information</a></li>
                                 <li><a href="{{ url('/user') }}">Users list</a></li>
+                                <li><a href="{{ url('/nasa') }}">NASA API`s</a></li>
                             </ul>
                         </li>
                     @endif
