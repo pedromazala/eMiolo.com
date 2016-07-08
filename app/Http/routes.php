@@ -26,4 +26,5 @@ Route::group(['middleware' => 'auth'], function()
 
     Route::get('/nasa', 'NasaController@index');
     Route::get('/nasa/apod', 'NasaController@apod');
+    Route::get('/nasa/neo-feed', 'NasaController@neoFeed');
 });
