@@ -29,15 +29,15 @@
 
             <div class="col-md-6">
                 <input id="hd" type="checkbox" class="form-control" name="hd"
-                       value="1" checked/>
+                       value="true" checked/>
             </div>
         </div>
         <a class="btn btn-primary" href="#" onclick="getData()">Get data</a>
         <a class="btn btn-default" href="{{ url('/nasa') }}">Back</a>
     </form>
     <hr/>
-    <div class="apod-contents">
-        <div class="apod-response" style="display: block;">
+    <div class="api-contents">
+        <div class="api-response">
             <img id="apod_img_id" width="250px"/>
 
             <iframe id="apod_vid_id" type="text/html" width="640" height="385"
@@ -47,7 +47,7 @@
             <h3 id="apod_title"></h3>
             <p id="apod_explaination"></p>
         </div>
-        <div class="apod-loading" style="display: none;">
+        <div class="api-loading" style="height: 200px;">
             <div class="spinner">
                 <div class="double-bounce1"></div>
                 <div class="double-bounce2"></div>
@@ -56,8 +56,6 @@
     </div>
     <script>
         function getData() {
-
-            $('.apod-contents, .apod-loading').toggle();
 
             var handleResult = function (result) {
                 if ("copyright" in result) {
@@ -73,19 +71,29 @@
                 }
                 else {
                     $("#apod_vid_id").css("display", "none");
+
                     $("#apod_img_id").attr("src", result.url);
+                    if ($('input[name="hd"]:checked')) {
+                        $("#apod_img_id").attr("src", result.hdurl);
+                    }
                 }
                 $("#apod_explaination").text(result.explanation);
                 $("#apod_title").text(result.title);
 
-                $('.apod-contents, .apod-loading').toggle();
+                $(".api-response").show();
+                $(".api-loading").hide();
             };
 
+            $(".api-response").hide();
+            $(".api-loading").show();
             $.ajax({
                 url: '{{ $url }}' + '&' + $('form').serialize(),
                 success: handleResult
             });
         }
-        getData();
+
+        $(function () {
+            getData();
+        });
     </script>
 @endsection
